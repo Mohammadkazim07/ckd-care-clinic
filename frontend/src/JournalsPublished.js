@@ -144,7 +144,7 @@ const JournalsPublished = () => {
               Will upload soon....
             </p>
             <a
-              href=""
+              href="https://www.worldwidejournals.com/indian-journal-of-applied-research-(IJAR)/article/management-of-chronic-asthma-tamaka-shawasa-with-the-help-of-indigenous-herbal-compound-drugs-and-lifestyle-modifications-a-case-study/MzI4Mzc=/?is=1&b1=57&k=15"
               className="text-indigo-500 inline-flex items-center mt-4 hover:text-indigo-700 transition duration-300 ease-in-out"
             >
               Learn More
