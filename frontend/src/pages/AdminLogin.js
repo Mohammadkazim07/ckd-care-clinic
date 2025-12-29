@@ -2,6 +2,9 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const API =
+  process.env.REACT_APP_API_URL || "https://ckd-care-clinic.onrender.com";
+
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,13 +17,13 @@ const AdminLogin = () => {
 
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/admin/login`,
+        `${API}/api/admin/login`,
         { email, password }
       );
 
       localStorage.setItem("token", res.data.token);
       navigate("/admin/dashboard");
-    } catch {
+    } catch (err) {
       setError("Invalid email or password");
     }
   };
