@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import doctorImage from "./assets/dp.jpeg"; // Ensure the photo is in the correct path
 //import axios from "axios";
-
+const API =
+  process.env.REACT_APP_API_URL || "https://ckd-care-clinic.onrender.com";
 const DoctorSection = () => {
   const [isFormOpen, setIsFormOpen] = useState(false); // State to toggle form visibility
 
@@ -26,7 +27,7 @@ const DoctorSection = () => {
       appointmentDate: e.target.appointmentDate.value,
     };
 
-    fetch(`${process.env.REACT_APP_API_URL}/api/appointments`, {
+    fetch(`${API}/api/appointments`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
