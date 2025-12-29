@@ -23,7 +23,7 @@ const AppointmentModal = ({ isOpen, closeModal, title }) => {
 
     try {
       const response = await fetch(
-        "${process.env.REACT_APP_API_URL}/api/service-appointments", // ✅ FIXED
+        `${process.env.REACT_APP_API_URL}/api/service-appointments`, // ✅ FIXED
         {
           method: "POST",
           headers: {
