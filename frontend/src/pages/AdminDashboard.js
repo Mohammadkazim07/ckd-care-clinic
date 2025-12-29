@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const API =
+  process.env.REACT_APP_API_URL || "https://ckd-care-clinic.onrender.com";
+
 const AdminDashboard = () => {
-  const [appointments, setAppointments] = useState([]);              // doctor
+  const [appointments, setAppointments] = useState([]);               // doctor
   const [serviceappointments, setServiceAppointments] = useState([]); // service
   const navigate = useNavigate();
 
@@ -17,7 +20,7 @@ const AdminDashboard = () => {
 
       // Doctor appointments
       const doctorRes = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/appointments`,
+        `${API}/api/appointments`,
         {
           headers: { Authorization: `Bearer ${token}` }
         }
@@ -25,14 +28,25 @@ const AdminDashboard = () => {
 
       // Service appointments
       const serviceRes = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/service-appointments`,
+        `${API}/api/service-appointments`,
         {
           headers: { Authorization: `Bearer ${token}` }
         }
       );
 
-      setAppointments(doctorRes.data);
-      setServiceAppointments(serviceRes.data);
+      // ✅ FIX: always store arrays
+      setAppointments(
+        Array.isArray(doctorRes.data)
+          ? doctorRes.data
+          : doctorRes.data?.appointments || []
+      );
+
+      setServiceAppointments(
+        Array.isArray(serviceRes.data)
+          ? serviceRes.data
+          : serviceRes.data?.appointments || []
+      );
+
     } catch (err) {
       console.error("Dashboard fetch error:", err);
     }
@@ -48,9 +62,7 @@ const AdminDashboard = () => {
      =========================== */
   const confirmAppointment = async (id) => {
     try {
-      await axios.put(
-        `${process.env.REACT_APP_API_URL}/api/appointments/confirm/${id}`
-      );
+      await axios.put(`${API}/api/appointments/confirm/${id}`);
       alert("Appointment confirmed");
       fetchData();
     } catch (err) {
@@ -63,9 +75,7 @@ const AdminDashboard = () => {
      =========================== */
   const confirmServiceAppointment = async (id) => {
     try {
-      await axios.put(
-        `${process.env.REACT_APP_API_URL}/api/service-appointments/confirm/${id}`
-      );
+      await axios.put(`${API}/api/service-appointments/confirm/${id}`);
       alert("Service appointment confirmed");
       fetchData();
     } catch (err) {
@@ -73,6 +83,7 @@ const AdminDashboard = () => {
     }
   };
 
+  // ✅ SAFE calculations
   const totalAppointments =
     appointments.length + serviceappointments.length;
 
