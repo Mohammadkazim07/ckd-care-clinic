@@ -8,7 +8,7 @@ require("dotenv").config();
    ========================= */
 const appointmentRoutes = require("./routes/appointmentRoutes");
 const serviceAppointmentRoutes = require("./routes/serviceAppointmentRoutes");
-const adminRoutes = require("./routes/adminroutes");
+const adminRoutes = require("./routes/adminRoutes");
 
 const app = express();
 
