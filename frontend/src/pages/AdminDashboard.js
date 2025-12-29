@@ -17,7 +17,7 @@ const AdminDashboard = () => {
 
       // Doctor appointments
       const doctorRes = await axios.get(
-        "${process.env.REACT_APP_API_URL}/api/appointments",
+        `${process.env.REACT_APP_API_URL}/api/appointments`,
         {
           headers: { Authorization: `Bearer ${token}` }
         }
@@ -25,7 +25,7 @@ const AdminDashboard = () => {
 
       // Service appointments
       const serviceRes = await axios.get(
-        "${process.env.REACT_APP_API_URL}/api/service-appointments",
+        `${process.env.REACT_APP_API_URL}/api/service-appointments`,
         {
           headers: { Authorization: `Bearer ${token}` }
         }
