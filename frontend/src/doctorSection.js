@@ -133,6 +133,7 @@ const DoctorSection = () => {
         </div>
       </div>
 
+      {/* Conditionally Render Appointment Form */}
       {isFormOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
           <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
@@ -145,14 +146,101 @@ const DoctorSection = () => {
                 <label htmlFor="fullName" className="block text-gray-700 font-medium">
                   PATIENT NAME
                 </label>
-                <input type="text" id="fullName" className="w-full px-4 py-2 border border-gray-300 rounded-lg" required />
+                <input
+                  type="text"
+                  id="fullName"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="age" className="block text-gray-700 font-medium">
+                  AGE
+                </label>
+                <input
+                  type="number"
+                  id="age"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  required
+                  min="1"
+                  max="120"
+                  placeholder="Enter your age"
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="gender" className="block text-gray-700 font-medium">
+                  GENDER
+                </label>
+                <input
+                  type="text"
+                  id="gender"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  required
+                />
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="address" className="block text-gray-700 font-medium">
+                  ADDRESS
+                </label>
+                <input
+                  type="text"
+                  id="address"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  required
+                />
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="phone" className="block text-gray-700 font-medium">
+                  MOBILE NUMBER
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  required
+                  pattern="[0-9 +]{13}" // Ensures 10 digits only
+                  maxLength="13"
+                />
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="email" className="block text-gray-700 font-medium">
+                  EMAIL
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  required
+                />
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="appointmentDate" className="block text-gray-700 font-medium">
+                  APPOINTMENT DATE
+                </label>
+                <input
+                  type="date"
+                  id="appointmentDate"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  required
+                />
               </div>
 
               <div className="flex justify-between items-center">
-                <button type="submit" className="bg-indigo-500 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg">
+                <button
+                  type="submit"
+                  className="bg-indigo-500 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg"
+                >
                   Submit
                 </button>
-                <button type="button" onClick={handleCancel} className="bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded-lg">
+                <button
+                  type="button"
+                  onClick={handleCancel}
+                  className="bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded-lg"
+                >
                   Cancel
                 </button>
               </div>
