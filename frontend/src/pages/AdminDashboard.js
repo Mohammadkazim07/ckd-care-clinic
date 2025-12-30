@@ -10,6 +10,8 @@ const AdminDashboard = () => {
   useEffect(() => {
     fetchData();
   }, []);
+const safeAppointments = Array.isArray(appointments) ? appointments : [];
+const safeServiceAppointments = Array.isArray(serviceappointments) ? serviceappointments : [];
 
   const fetchData = async () => {
     try {
@@ -79,9 +81,6 @@ const AdminDashboard = () => {
   const totalAppointments =
     appointments.length + serviceappointments.length;
   
-  const safeAppointments = Array.isArray(appointments) ? appointments : [];
-  const safeServiceAppointments = Array.isArray(serviceappointments) ? serviceappointments : [];
-  
   const pending =
     safeAppointments.filter(a => a.status === "Pending").length +
     safeServiceAppointments.filter(a => a.status === "Pending").length;
@@ -139,7 +138,7 @@ const AdminDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {appointments.map((a) => (
+            {safeAppointments.map((a) => (
               <tr key={a._id} className="border-t">
                 <td className="p-3">{a.fullName}</td>
                 <td className="p-3">{a.email}</td>
@@ -181,7 +180,7 @@ const AdminDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {serviceappointments.map((a) => (
+            {safeserviceAppointments.map((a) => (
               <tr key={a._id} className="border-t">
                 <td className="p-3">{a.fullName}</td>
                 <td className="p-3">{a.email}</td>
