@@ -31,18 +31,10 @@ const AdminDashboard = () => {
         }
       );
 
-      // 🔒 SAFETY: always force array
-      setAppointments(
-        Array.isArray(doctorRes.data)
-          ? doctorRes.data
-          : doctorRes.data?.appointments || []
-      );
+      // ✅ BACKEND RETURNS ARRAYS — SET DIRECTLY
+      setAppointments(doctorRes.data);
+      setServiceAppointments(serviceRes.data);
 
-      setServiceAppointments(
-        Array.isArray(serviceRes.data)
-          ? serviceRes.data
-          : serviceRes.data?.appointments || []
-      );
     } catch (err) {
       console.error("Dashboard fetch error:", err);
     }
@@ -85,28 +77,16 @@ const AdminDashboard = () => {
     }
   };
 
-  /* ===========================
-     SAFE CALCULATIONS (FIX)
-     =========================== */
   const totalAppointments =
-    (Array.isArray(appointments) ? appointments.length : 0) +
-    (Array.isArray(serviceappointments) ? serviceappointments.length : 0);
+    appointments.length + serviceappointments.length;
 
   const pending =
-    (Array.isArray(appointments)
-      ? appointments.filter(a => a.status === "Pending").length
-      : 0) +
-    (Array.isArray(serviceappointments)
-      ? serviceappointments.filter(a => a.status === "Pending").length
-      : 0);
+    appointments.filter(a => a.status === "Pending").length +
+    serviceappointments.filter(a => a.status === "Pending").length;
 
   const confirmed =
-    (Array.isArray(appointments)
-      ? appointments.filter(a => a.status === "Confirmed").length
-      : 0) +
-    (Array.isArray(serviceappointments)
-      ? serviceappointments.filter(a => a.status === "Confirmed").length
-      : 0);
+    appointments.filter(a => a.status === "Confirmed").length +
+    serviceappointments.filter(a => a.status === "Confirmed").length;
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -122,6 +102,7 @@ const AdminDashboard = () => {
         </button>
       </div>
 
+      {/* STATS */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="bg-white p-6 rounded shadow">
           <h3 className="text-gray-500">Total Appointments</h3>
@@ -139,7 +120,7 @@ const AdminDashboard = () => {
         </div>
       </div>
 
-      {/* Doctor Appointments */}
+      {/* DOCTOR APPOINTMENTS */}
       <div className="bg-white p-6 rounded shadow mb-10 overflow-x-auto">
         <h2 className="text-xl font-semibold mb-4">
           General Appointments
@@ -157,31 +138,30 @@ const AdminDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {Array.isArray(appointments) &&
-              appointments.map((a) => (
-                <tr key={a._id} className="border-t">
-                  <td className="p-3">{a.fullName}</td>
-                  <td className="p-3">{a.email}</td>
-                  <td className="p-3">{a.phone}</td>
-                  <td className="p-3">{a.appointmentDate}</td>
-                  <td className="p-3 font-semibold">{a.status}</td>
-                  <td className="p-3">
-                    {a.status === "Pending" && (
-                      <button
-                        onClick={() => confirmAppointment(a._id)}
-                        className="bg-green-500 text-white px-3 py-1 rounded"
-                      >
-                        Confirm
-                      </button>
-                    )}
-                  </td>
-                </tr>
-              ))}
+            {appointments.map((a) => (
+              <tr key={a._id} className="border-t">
+                <td className="p-3">{a.fullName}</td>
+                <td className="p-3">{a.email}</td>
+                <td className="p-3">{a.phone}</td>
+                <td className="p-3">{a.appointmentDate}</td>
+                <td className="p-3 font-semibold">{a.status}</td>
+                <td className="p-3">
+                  {a.status === "Pending" && (
+                    <button
+                      onClick={() => confirmAppointment(a._id)}
+                      className="bg-green-500 text-white px-3 py-1 rounded"
+                    >
+                      Confirm
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
 
-      {/* Service Appointments */}
+      {/* SERVICE APPOINTMENTS */}
       <div className="bg-white p-6 rounded shadow overflow-x-auto">
         <h2 className="text-xl font-semibold mb-4">
           Service Appointments
@@ -200,27 +180,26 @@ const AdminDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {Array.isArray(serviceappointments) &&
-              serviceappointments.map((a) => (
-                <tr key={a._id} className="border-t">
-                  <td className="p-3">{a.fullName}</td>
-                  <td className="p-3">{a.email}</td>
-                  <td className="p-3">{a.phone}</td>
-                  <td className="p-3">{a.serviceType}</td>
-                  <td className="p-3">{a.appointmentDate}</td>
-                  <td className="p-3 font-semibold">{a.status}</td>
-                  <td className="p-3">
-                    {a.status === "Pending" && (
-                      <button
-                        onClick={() => confirmServiceAppointment(a._id)}
-                        className="bg-green-500 text-white px-3 py-1 rounded"
-                      >
-                        Confirm
-                      </button>
-                    )}
-                  </td>
-                </tr>
-              ))}
+            {serviceappointments.map((a) => (
+              <tr key={a._id} className="border-t">
+                <td className="p-3">{a.fullName}</td>
+                <td className="p-3">{a.email}</td>
+                <td className="p-3">{a.phone}</td>
+                <td className="p-3">{a.serviceType}</td>
+                <td className="p-3">{a.appointmentDate}</td>
+                <td className="p-3 font-semibold">{a.status}</td>
+                <td className="p-3">
+                  {a.status === "Pending" && (
+                    <button
+                      onClick={() => confirmServiceAppointment(a._id)}
+                      className="bg-green-500 text-white px-3 py-1 rounded"
+                    >
+                      Confirm
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
