@@ -46,7 +46,7 @@ const Header = () => {
               tracking-wide
               text-[30px]
               md:text-[36px]
-              lg:text-[60px]
+              lg:text-[50px]
               leading-none
             "
           >
