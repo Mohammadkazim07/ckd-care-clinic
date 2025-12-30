@@ -15,33 +15,26 @@ const AdminDashboard = () => {
     try {
       const token = localStorage.getItem("token");
 
+      // Doctor appointments
       const doctorRes = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/appointments`,
-        { headers: { Authorization: `Bearer ${token}` } }
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
       );
 
+      // Service appointments
       const serviceRes = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/service-appointments`,
-        { headers: { Authorization: `Bearer ${token}` } }
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
       );
 
-      // ✅ FORCE ARRAYS (THIS FIXES THE CRASH)
-      setAppointments(
-        Array.isArray(doctorRes.data)
-          ? doctorRes.data
-          : doctorRes.data?.appointments || []
-      );
-
-      setServiceAppointments(
-        Array.isArray(serviceRes.data)
-          ? serviceRes.data
-          : serviceRes.data?.appointments || []
-      );
-
+      setAppointments(doctorRes.data);
+      setServiceAppointments(serviceRes.data);
     } catch (err) {
       console.error("Dashboard fetch error:", err);
-      setAppointments([]);
-      setServiceAppointments([]);
     }
   };
 
@@ -50,28 +43,39 @@ const AdminDashboard = () => {
     navigate("/");
   };
 
+  /* ===========================
+     CONFIRM DOCTOR APPOINTMENT
+     =========================== */
   const confirmAppointment = async (id) => {
     try {
       await axios.put(
         `${process.env.REACT_APP_API_URL}/api/appointments/confirm/${id}`
       );
+      alert("Appointment confirmed");
       fetchData();
     } catch (err) {
       console.error("Confirm failed:", err);
+      alert("Failed to confirm appointment");
     }
   };
 
+  /* ===========================
+     CONFIRM SERVICE APPOINTMENT
+     =========================== */
   const confirmServiceAppointment = async (id) => {
     try {
       await axios.put(
         `${process.env.REACT_APP_API_URL}/api/service-appointments/confirm/${id}`
       );
+      alert("Service appointment confirmed");
       fetchData();
     } catch (err) {
       console.error("Service confirm failed:", err);
+      alert("Failed to confirm service appointment");
     }
   };
 
+  // ✅ SAFE calculations
   const totalAppointments =
     appointments.length + serviceappointments.length;
 
@@ -97,7 +101,6 @@ const AdminDashboard = () => {
         </button>
       </div>
 
-      {/* STATS */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="bg-white p-6 rounded shadow">
           <h3 className="text-gray-500">Total Appointments</h3>
@@ -115,21 +118,31 @@ const AdminDashboard = () => {
         </div>
       </div>
 
-      {/* DOCTOR APPOINTMENTS */}
+      {/* Doctor Appointments */}
       <div className="bg-white p-6 rounded shadow mb-10 overflow-x-auto">
         <h2 className="text-xl font-semibold mb-4">
           General Appointments
         </h2>
 
-        <table className="w-full border">
+        <table className="w-full text-left border">
+          <thead className="bg-gray-200">
+            <tr>
+              <th className="p-3">Name</th>
+              <th className="p-3">Email</th>
+              <th className="p-3">Phone</th>
+              <th className="p-3">Date</th>
+              <th className="p-3">Status</th>
+              <th className="p-3">Action</th>
+            </tr>
+          </thead>
           <tbody>
-            {appointments.map(a => (
+            {appointments.map((a) => (
               <tr key={a._id} className="border-t">
                 <td className="p-3">{a.fullName}</td>
                 <td className="p-3">{a.email}</td>
                 <td className="p-3">{a.phone}</td>
                 <td className="p-3">{a.appointmentDate}</td>
-                <td className="p-3">{a.status}</td>
+                <td className="p-3 font-semibold">{a.status}</td>
                 <td className="p-3">
                   {a.status === "Pending" && (
                     <button
@@ -146,22 +159,33 @@ const AdminDashboard = () => {
         </table>
       </div>
 
-      {/* SERVICE APPOINTMENTS */}
+      {/* Service Appointments */}
       <div className="bg-white p-6 rounded shadow overflow-x-auto">
         <h2 className="text-xl font-semibold mb-4">
           Service Appointments
         </h2>
 
-        <table className="w-full border">
+        <table className="w-full text-left border">
+          <thead className="bg-gray-200">
+            <tr>
+              <th className="p-3">Name</th>
+              <th className="p-3">Email</th>
+              <th className="p-3">Phone</th>
+              <th className="p-3">Service</th>
+              <th className="p-3">Date</th>
+              <th className="p-3">Status</th>
+              <th className="p-3">Action</th>
+            </tr>
+          </thead>
           <tbody>
-            {serviceappointments.map(a => (
+            {serviceappointments.map((a) => (
               <tr key={a._id} className="border-t">
                 <td className="p-3">{a.fullName}</td>
                 <td className="p-3">{a.email}</td>
                 <td className="p-3">{a.phone}</td>
                 <td className="p-3">{a.serviceType}</td>
                 <td className="p-3">{a.appointmentDate}</td>
-                <td className="p-3">{a.status}</td>
+                <td className="p-3 font-semibold">{a.status}</td>
                 <td className="p-3">
                   {a.status === "Pending" && (
                     <button
