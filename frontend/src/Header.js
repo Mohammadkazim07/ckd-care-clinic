@@ -59,16 +59,16 @@ const Header = () => {
 
         {/* NAVBAR ROW */}
         <div className="mt-4 flex justify-end items-center gap-4 flex-wrap">
-          <a href="#1" className="text-white font-semibold text-lg hover:text-gray-300">
+          <a href="#1" className="text-white font-semibold text-lg  hover:bg-[#8b1d2c]">
             Profile
           </a>
-          <a href="#4" className="text-white font-semibold text-lg hover:text-gray-300">
+          <a href="#4" className="text-white font-semibold text-lg  hover:bg-[#8b1d2c]">
             Publications
           </a>
-          <a href="#2" className="text-white font-semibold text-lg hover:text-gray-300">
+          <a href="#2" className="text-white font-semibold text-lg  hover:bg-[#8b1d2c]">
             Services
           </a>
-          <a href="#5" className="text-white font-semibold text-lg hover:text-gray-300">
+          <a href="#5" className="text-white font-semibold text-lg  hover:bg-[#8b1d2c]">
             Achievements
           </a>
 
