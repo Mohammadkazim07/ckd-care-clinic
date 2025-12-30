@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 const API =
   process.env.REACT_APP_API_URL || "https://ckd-care-clinic.onrender.com";
+  
 const AppointmentModal = ({ isOpen, closeModal, title }) => {
   const [fullName, setName] = useState("");
   const [email, setEmail] = useState("");

@@ -15,11 +15,12 @@ const app = express();
 /* =========================
    MIDDLEWARE
    ========================= */
-
-app.use(cors({
-  origin: "*", // free deployment safe
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: "*", // free deployment safe
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 

@@ -18,19 +18,19 @@ router.post("/", async (req, res) => {
       phone: req.body.phone,
       email: req.body.email,
       appointmentDate: req.body.appointmentDate,
-      status: "Pending"
+      status: "Pending",
     });
 
     await appointment.save();
 
     res.status(201).json({
       message: "Appointment booked successfully",
-      appointment
+      appointment,
     });
   } catch (error) {
     res.status(400).json({
       message: "Failed to book appointment",
-      error: error.message
+      error: error.message,
     });
   }
 });
@@ -52,6 +52,8 @@ router.get("/", async (req, res) => {
    =========================== */
 router.put("/confirm/:id", async (req, res) => {
   try {
+    console.log("✅ CONFIRM ROUTE HIT");
+
     // 1️⃣ CONFIRM APPOINTMENT FIRST
     const appointment = await Appointment.findByIdAndUpdate(
       req.params.id,
@@ -62,6 +64,9 @@ router.put("/confirm/:id", async (req, res) => {
     if (!appointment) {
       return res.status(404).json({ message: "Appointment not found" });
     }
+
+    console.log("📧 Patient Email:", appointment.email);
+    console.log("📧 Doctor Email:", process.env.DOCTOR_EMAIL);
 
     // 2️⃣ SEND EMAIL TO PATIENT (SAFE)
     try {
@@ -75,6 +80,7 @@ Your appointment scheduled on ${appointment.appointmentDate} has been CONFIRMED.
 Regards,
 CKD Care Clinic`
       );
+      console.log("✅ Patient email sent");
     } catch (err) {
       console.error("❌ Patient email failed:", err.message);
     }
@@ -88,6 +94,7 @@ CKD Care Clinic`
 Phone: ${appointment.phone}
 Date: ${appointment.appointmentDate}`
       );
+      console.log("✅ Doctor email sent");
     } catch (err) {
       console.error("❌ Doctor email failed:", err.message);
     }
@@ -98,6 +105,7 @@ Date: ${appointment.appointmentDate}`
         appointment.phone,
         `CKD Care Clinic: Your appointment on ${appointment.appointmentDate} is CONFIRMED.`
       );
+      console.log("✅ SMS sent");
     } catch (err) {
       console.error("❌ SMS failed:", err.message);
     }
@@ -105,14 +113,13 @@ Date: ${appointment.appointmentDate}`
     // 5️⃣ ALWAYS RETURN SUCCESS
     res.json({
       message: "Appointment confirmed",
-      appointment
+      appointment,
     });
-
   } catch (error) {
     console.error("❌ Confirm route error:", error.message);
     res.status(500).json({
       message: "Failed to confirm appointment",
-      error: error.message
+      error: error.message,
     });
   }
 });

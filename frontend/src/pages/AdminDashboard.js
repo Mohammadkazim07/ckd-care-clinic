@@ -2,9 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const API =
-  process.env.REACT_APP_API_URL || "https://ckd-care-clinic.onrender.com";
-
 const AdminDashboard = () => {
   const [appointments, setAppointments] = useState([]);               // doctor
   const [serviceappointments, setServiceAppointments] = useState([]); // service
@@ -20,7 +17,7 @@ const AdminDashboard = () => {
 
       // Doctor appointments
       const doctorRes = await axios.get(
-        `${API}/api/appointments`,
+        `${process.env.REACT_APP_API_URL}/api/appointments`,
         {
           headers: { Authorization: `Bearer ${token}` }
         }
@@ -28,25 +25,14 @@ const AdminDashboard = () => {
 
       // Service appointments
       const serviceRes = await axios.get(
-        `${API}/api/service-appointments`,
+        `${process.env.REACT_APP_API_URL}/api/service-appointments`,
         {
           headers: { Authorization: `Bearer ${token}` }
         }
       );
 
-      // ✅ FIX: always store arrays
-      setAppointments(
-        Array.isArray(doctorRes.data)
-          ? doctorRes.data
-          : doctorRes.data?.appointments || []
-      );
-
-      setServiceAppointments(
-        Array.isArray(serviceRes.data)
-          ? serviceRes.data
-          : serviceRes.data?.appointments || []
-      );
-
+      setAppointments(doctorRes.data);
+      setServiceAppointments(serviceRes.data);
     } catch (err) {
       console.error("Dashboard fetch error:", err);
     }
@@ -62,10 +48,13 @@ const AdminDashboard = () => {
      =========================== */
   const confirmAppointment = async (id) => {
     try {
-      await axios.put(`${API}/api/appointments/confirm/${id}`);
+      await axios.put(
+        `${process.env.REACT_APP_API_URL}/api/appointments/confirm/${id}`
+      );
       alert("Appointment confirmed");
       fetchData();
     } catch (err) {
+      console.error("Confirm failed:", err);
       alert("Failed to confirm appointment");
     }
   };
@@ -75,10 +64,13 @@ const AdminDashboard = () => {
      =========================== */
   const confirmServiceAppointment = async (id) => {
     try {
-      await axios.put(`${API}/api/service-appointments/confirm/${id}`);
+      await axios.put(
+        `${process.env.REACT_APP_API_URL}/api/service-appointments/confirm/${id}`
+      );
       alert("Service appointment confirmed");
       fetchData();
     } catch (err) {
+      console.error("Service confirm failed:", err);
       alert("Failed to confirm service appointment");
     }
   };
@@ -97,7 +89,6 @@ const AdminDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-indigo-700">
           Admin Dashboard
@@ -110,7 +101,6 @@ const AdminDashboard = () => {
         </button>
       </div>
 
-      {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="bg-white p-6 rounded shadow">
           <h3 className="text-gray-500">Total Appointments</h3>
