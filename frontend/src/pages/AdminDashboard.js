@@ -6,12 +6,12 @@ const AdminDashboard = () => {
   const [appointments, setAppointments] = useState([]);               // doctor
   const [serviceappointments, setServiceAppointments] = useState([]); // service
   const navigate = useNavigate();
-
+  
+  const safeAppointments = Array.isArray(appointments) ? appointments : [];
+  const safeServiceAppointments = Array.isArray(serviceappointments) ? serviceappointments : [];
   useEffect(() => {
     fetchData();
   }, []);
-const safeAppointments = Array.isArray(appointments) ? appointments : [];
-const safeServiceAppointments = Array.isArray(serviceappointments) ? serviceappointments : [];
 
   const fetchData = async () => {
     try {
@@ -79,7 +79,7 @@ const safeServiceAppointments = Array.isArray(serviceappointments) ? serviceappo
 
   // ✅ SAFE calculations
   const totalAppointments =
-    appointments.length + serviceappointments.length;
+    safeAppointments.length + safeServiceAppointments.length;
   
   const pending =
     safeAppointments.filter(a => a.status === "Pending").length +
@@ -180,7 +180,7 @@ const safeServiceAppointments = Array.isArray(serviceappointments) ? serviceappo
             </tr>
           </thead>
           <tbody>
-            {safeserviceAppointments.map((a) => (
+            {safeServiceAppointments.map((a) => (
               <tr key={a._id} className="border-t">
                 <td className="p-3">{a.fullName}</td>
                 <td className="p-3">{a.email}</td>
