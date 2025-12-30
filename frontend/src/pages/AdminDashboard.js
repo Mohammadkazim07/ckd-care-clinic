@@ -78,14 +78,17 @@ const AdminDashboard = () => {
   // ✅ SAFE calculations
   const totalAppointments =
     appointments.length + serviceappointments.length;
-
+  
+  const safeAppointments = Array.isArray(appointments) ? appointments : [];
+  const safeServiceAppointments = Array.isArray(serviceappointments) ? serviceappointments : [];
+  
   const pending =
-    appointments.filter(a => a.status === "Pending").length +
-    serviceappointments.filter(a => a.status === "Pending").length;
+    safeAppointments.filter(a => a.status === "Pending").length +
+    safeServiceAppointments.filter(a => a.status === "Pending").length;
 
   const confirmed =
-    appointments.filter(a => a.status === "Confirmed").length +
-    serviceappointments.filter(a => a.status === "Confirmed").length;
+    safeAppointments.filter(a => a.status === "Confirmed").length +
+    safeServiceAppointments.filter(a => a.status === "Confirmed").length;
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
