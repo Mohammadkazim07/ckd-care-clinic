@@ -2,8 +2,8 @@ import React from 'react';
 
 const JournalsPublished = () => {
   return (
-    <section className="py-24 bg-gradient-to-br from-sky-100 to-blue-200">
-      <div className="container px-5 mx-auto">
+    <section className="text-gray-600 body-font">
+      <div className="container mx-auto px-5 py-24 bg-gradient-to-br from-sky-100 to-blue-200 shadow-xl rounded-lg">
         {/* Section Title */}
         <div className="text-center mb-20">
           <h1 className="text-4xl font-bold text-gray-900 mb-4"id ="4">Journals Published</h1>
@@ -165,7 +165,11 @@ const JournalsPublished = () => {
 
         </div>
       </div>
+
+      <div className="w-full bg-gray-300 mt-20 rounded-full"></div>
+
     </section>
+    
   );
 };
 

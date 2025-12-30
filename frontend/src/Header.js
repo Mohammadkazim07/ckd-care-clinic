@@ -1,17 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "./assets/logo.png"; // your logo
+import logo from "./assets/logo.png";
 
 const Header = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
   const handleAdminClick = () => {
-    if (token) {
-      navigate("/admin/dashboard");
-    } else {
-      navigate("/admin");
-    }
+    navigate(token ? "/admin/dashboard" : "/admin");
   };
 
   const handleLogout = () => {
@@ -20,71 +16,78 @@ const Header = () => {
   };
 
   return (
-    <header className="text-gray-600 body-font">
-      <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row item-center">
-        
-        {/* Logo + Title */}
-        <div
-          className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer"
-          onClick={() => navigate("/")}
-        >
-          <div className="bg-white p-2 rounded-md shadow-sm mr-3">
+    <header className="bg-[#1f3a5f] w-full">
+      {/* ✅ FULL WIDTH so logo can touch left */}
+      <div className="w-full px-6 py-4">
+
+        {/* TOP ROW */}
+        <div className="flex items-center gap-4">
+
+          {/* LOGO — extreme left */}
+          <div
+            onClick={() => navigate("/")}
+            className="bg-white p-2 rounded-md cursor-pointer"
+          >
             <img
-              width="160"
-              height="160"
               src={logo}
-              className="custom-logo"
-              alt="Chest & Kidney Care Centre"
-              decoding="async"
+              alt="CKD Care Clinic"
+              className="w-40 h-35 object-contain"
             />
           </div>
 
-          <span className="flex items-center sm:text-6xl text-6xl mb-4 font-bold bg-white border-0 py-2 px-4 w-auto focus:outline-none rounded">
-            <span className="text-[#8b1d2c] mr-2">
-              CHEST,
-            </span>
+          {/* TITLE — same line */}
+          <h1
+            className="
+              bg-white
+              rounded-md
+              px-6
+              py-3
+              font-extrabold
+              tracking-wide
+              text-[30px]
+              md:text-[36px]
+              lg:text-[60px]
+              leading-none
+            "
+          >
+            <span className="text-[#8b1d2c]">CHEST, </span>
             <span className="text-[#0f766e]">
               KIDNEY AND DIGESTIVE CARE CLINIC
             </span>
-          </span>
+          </h1>
         </div>
 
-        {/* Navigation */}
-        <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-          <a className="mr-5 text-white hover:bg-[#8b1d2c] font-semibold text-lg transition-all duration-200" href="#1">
+        {/* NAVBAR ROW */}
+        <div className="mt-4 flex justify-end items-center gap-4 flex-wrap">
+          <a href="#1" className="text-white font-semibold text-lg hover:text-gray-300">
             Profile
           </a>
-
-          <a className="mr-5 text-white hover:bg-[#8b1d2c] font-semibold text-lg transition-all duration-200" href="#4">
+          <a href="#4" className="text-white font-semibold text-lg hover:text-gray-300">
             Publications
           </a>
-
-          <a className="mr-5 text-white hover:bg-[#8b1d2c] font-semibold text-lg transition-all duration-200" href="#2">
+          <a href="#2" className="text-white font-semibold text-lg hover:text-gray-300">
             Services
           </a>
-
-          <a className="mr-5 text-white hover:bg-[#8b1d2c] font-semibold text-lg transition-all duration-200" href="#5">
+          <a href="#5" className="text-white font-semibold text-lg hover:text-gray-300">
             Achievements
           </a>
 
-          {/* Admin Button */}
           <button
             onClick={handleAdminClick}
-            className="mr-5 text-[#8b1d2c] bg-white border border-[#8b1d2c] hover:bg-[#8b1d2c] hover:text-white cursor-pointer font-semibold text-lg transition-all duration-200 px-4 py-2 rounded-md shadow-sm"
+            className="bg-white text-[#8b1d2c] border border-[#8b1d2c] px-4 py-2 rounded-md font-semibold hover:bg-[#8b1d2c] hover:text-white transition"
           >
             Admin Login
           </button>
 
-          {/* Logout (only if logged in) */}
           {token && (
             <button
               onClick={handleLogout}
-              className="ml-2 bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
+              className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition"
             >
               Logout
             </button>
           )}
-        </nav>
+        </div>
       </div>
     </header>
   );

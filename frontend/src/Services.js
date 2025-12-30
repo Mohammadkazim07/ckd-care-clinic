@@ -183,8 +183,8 @@ const Services = () => {
   ];
 
   return (
-    <section className="text-gray-600 body-font overflow-hidden bg-gradient-to-br from-sky-100 to-blue-200 py-10">
-      <div className="container px-5 mx-auto">
+    <section className="text-gray-600 body-font">
+      <div className="container mx-auto px-5 py-24 bg-gradient-to-br from-sky-100 to-blue-200 shadow-xl rounded-lg">
         <div className="text-center mb-10">
           <h1 className="sm:text-5xl text-4xl font-bold title-font text-gray-900" id="2">
             Our Services
@@ -219,6 +219,8 @@ const Services = () => {
         closeModal={closeModal}
         title={modalTitle}
       />
+
+      <div className="w-full bg-gray-300 mt-20 rounded-full"></div>
     </section>
   );
 };

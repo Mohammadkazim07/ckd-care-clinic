@@ -1,17 +1,19 @@
 import React from 'react';
 import Avaward from './assets/1.jpeg';
 import issnImage from './assets/issn.jpeg';
+import md from './assets/md.jpeg';
+import bams from './assets/bams.jpeg';
 
 
 const AchievementsSection = () => {
   return (
     <section className="text-gray-600 body-font">
-      <div className="container px-5 py-24 mx-auto">
+      <div className="container mx-auto px-5 py-24 bg-gradient-to-br from-sky-100 to-blue-200 shadow-xl rounded-lg">
         {/* Section Title */}
         <div className="flex flex-wrap w-full mb-20">
           <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
-            <h1 className="sm:text-5xl text-4xl font-medium title-font mb-2 text-white" id="5">
-              ACHIEVEMENTS
+            <h1 className="sm:text-5xl text-4xl font-medium title-font mb-2 text-black" id="5">
+              CREDENTIALS & HONORS
             </h1>
             <div className="h-1 w-20 bg-indigo-500 rounded"></div>
           </div>
@@ -34,15 +36,26 @@ const AchievementsSection = () => {
               <h2 className="text-lg text-white font-semibold title-font mb-4">ISSN BEST RESEARCHER AWARD</h2>
             </div>
           </div>
-          {/* Fourth Card */}
-          {/* <div className="xl:w-1/4 md:w-1/2 p-4">
+
+          <div className="xl:w-1/4 md:w-1/2 p-4">
             <div className="bg-gradient-to-r from-indigo-500 to-purple-500 p-6 rounded-lg shadow-xl">
-              <img className="h-40 rounded w-full object-cover object-center mb-6 border-4 border-white" src="/photo.jpeg" alt="International Researcher Award" />
-              <h2 className="text-lg text-white font-semibold title-font mb-4">INTERNATIONAL RESEARCHER AWARD</h2>
+            <img className="h-40 rounded w-full object-cover object-center mb-6 border-4 border-white" src={bams} alt="BAMS DEGREE" />
+              <h2 className="text-lg text-white font-semibold title-font mb-4">BAMS DEGREE</h2>
             </div>
-          </div> */}
+          </div>
+
+          <div className="xl:w-1/4 md:w-1/2 p-4">
+            <div className="bg-gradient-to-r from-indigo-500 to-purple-500 p-6 rounded-lg shadow-xl">
+            <img className="h-40 rounded w-full object-cover object-center mb-6 border-4 border-white" src={md} alt="MD MEDECINE" />
+              <h2 className="text-lg text-white font-semibold title-font mb-4">MD MEDECINE(Ay)</h2>
+            </div>
+          </div>
+
+
         </div>
       </div>
+
+      <div className="w-full bg-gray-300 mt-20 rounded-full"></div>
     </section>
   );
 };
