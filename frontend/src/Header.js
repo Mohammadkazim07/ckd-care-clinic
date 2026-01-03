@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "./assets/logo.png";
+import headerBg from "./assets/banner.jpg"; // 👈 ADD THIS
 
 const Header = () => {
   const navigate = useNavigate();
@@ -16,14 +17,25 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-[#1f3a5f] w-full">
-      {/* ✅ FULL WIDTH so logo can touch left */}
+    <header
+      className="w-full relative"
+      style={{
+        backgroundImage: `linear-gradient(
+          rgba(31, 58, 95, 0.85),
+          rgba(31, 58, 95, 0.85)
+        ), url(${banner})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat"
+      }}
+    >
+      {/* CONTENT */}
       <div className="w-full px-6 py-4">
 
         {/* TOP ROW */}
         <div className="flex items-center gap-4">
 
-          {/* LOGO — extreme left */}
+          {/* LOGO */}
           <div
             onClick={() => navigate("/")}
             className="bg-white p-2 rounded-md cursor-pointer"
@@ -35,7 +47,7 @@ const Header = () => {
             />
           </div>
 
-          {/* TITLE — same line */}
+          {/* TITLE */}
           <h1
             className="
               bg-white
@@ -59,16 +71,16 @@ const Header = () => {
 
         {/* NAVBAR ROW */}
         <div className="mt-4 flex justify-end items-center gap-4 flex-wrap">
-          <a href="#1" className="text-white font-semibold text-lg  hover:bg-[#8b1d2c]">
+          <a href="#1" className="text-white font-semibold text-lg hover:bg-[#8b1d2c] px-2 py-1 rounded">
             Profile
           </a>
-          <a href="#4" className="text-white font-semibold text-lg  hover:bg-[#8b1d2c]">
+          <a href="#4" className="text-white font-semibold text-lg hover:bg-[#8b1d2c] px-2 py-1 rounded">
             Publications
           </a>
-          <a href="#2" className="text-white font-semibold text-lg  hover:bg-[#8b1d2c]">
+          <a href="#2" className="text-white font-semibold text-lg hover:bg-[#8b1d2c] px-2 py-1 rounded">
             Services
           </a>
-          <a href="#5" className="text-white font-semibold text-lg  hover:bg-[#8b1d2c]">
+          <a href="#5" className="text-white font-semibold text-lg hover:bg-[#8b1d2c] px-2 py-1 rounded">
             Achievements
           </a>
 
