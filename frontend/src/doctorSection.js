@@ -80,11 +80,8 @@ const DoctorSection = () => {
               <p className="font-bold">Experience - 7 years</p>
             </div>
 
-            <h2
-              className="inline-block text-2xl font-semibold bg-gray-700 px-4 py-2 mb-6 rounded-md"
-              style={{ color: "#7f1322" }}
-            >
-              About Dr. Mohammad Aamir
+            <h2 className="inline-block text-2xl font-semibold text-white bg-gray-700 px-4 py-2 mb-6 rounded-md">
+             About Dr. Mohammad Aamir
             </h2>
 
 
@@ -110,7 +107,7 @@ const DoctorSection = () => {
         {/* ===== MEMBERSHIP ===== */}
         <section className="w-full bg-white py-12 mt-10 rounded-xl">
           <div className="max-w-7xl mx-auto px-6">
-            <h2 className="inline-block text-2xl font-semibold text-white bg-gray-700 px-4 py-2 mb-6 rounded-md">
+            <h2 className="inline-block text-2xl font-semibold text-white bg-red-900 px-4 py-2 mb-6 rounded-md">
               Dr. Mohammad Aamir&apos;s Membership
             </h2>
 
