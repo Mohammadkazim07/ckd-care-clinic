@@ -26,7 +26,7 @@ const Header = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* 🔹 BACKGROUND OVERLAY (10% IMAGE VISIBILITY) */}
+      {/* 🔹 BACKGROUND OVERLAY */}
       <div
         className="absolute inset-0"
         style={{ backgroundColor: "rgba(255, 255, 255, 0.7)" }}
@@ -37,8 +37,6 @@ const Header = () => {
 
         {/* TOP ROW */}
         <div className="flex items-center gap-4">
-
-          {/* LOGO (TRANSPARENT BACKGROUND) */}
           <div
             onClick={() => navigate("/")}
             className="p-2 rounded-md cursor-pointer"
@@ -50,7 +48,7 @@ const Header = () => {
             />
           </div>
 
-          {/* TITLE WITH CLEAN WHITE OUTLINE (NO OVERLAP) */}
+          {/* TITLE */}
           <h1
             className="
               px-6
@@ -82,17 +80,37 @@ const Header = () => {
         </div>
 
         {/* NAVBAR ROW */}
-        <div className="mt-4 flex justify-end items-center gap-4 flex-wrap">
-          <a href="#1" className="text-blue font-semibold text-lg hover:bg-[#8b1d2c] px-2 py-1 rounded">
+        <div className="mt-6 flex justify-end items-center gap-3 flex-wrap">
+
+          <a
+            href="#1"
+            className="inline-block text-lg font-semibold bg-gray-700 px-4 py-2 rounded-md hover:bg-gray-800 transition"
+            style={{ color: "#7f1322" }}
+          >
             Profile
           </a>
-          <a href="#4" className="text-blue font-semibold text-lg hover:bg-[#8b1d2c] px-2 py-1 rounded">
+
+          <a
+            href="#4"
+            className="inline-block text-lg font-semibold bg-gray-700 px-4 py-2 rounded-md hover:bg-gray-800 transition"
+            style={{ color: "#7f1322" }}
+          >
             Publications
           </a>
-          <a href="#2" className="text-blue font-semibold text-lg hover:bg-[#8b1d2c] px-2 py-1 rounded">
+
+          <a
+            href="#2"
+            className="inline-block text-lg font-semibold bg-gray-700 px-4 py-2 rounded-md hover:bg-gray-800 transition"
+            style={{ color: "#7f1322" }}
+          >
             Services
           </a>
-          <a href="#5" className="text-blue font-semibold text-lg hover:bg-[#8b1d2c] px-2 py-1 rounded">
+
+          <a
+            href="#5"
+            className="inline-block text-lg font-semibold bg-gray-700 px-4 py-2 rounded-md hover:bg-gray-800 transition"
+            style={{ color: "#7f1322" }}
+          >
             Achievements
           </a>
 
@@ -111,6 +129,7 @@ const Header = () => {
               Logout
             </button>
           )}
+
         </div>
       </div>
     </header>
