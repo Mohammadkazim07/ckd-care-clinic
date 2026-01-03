@@ -50,7 +50,7 @@ const Header = () => {
             />
           </div>
 
-          {/* TITLE WITH WHITE OUTLINE ON EACH LETTER */}
+          {/* TITLE WITH CLEAN WHITE OUTLINE (NO OVERLAP) */}
           <h1
             className="
               px-6
@@ -63,24 +63,19 @@ const Header = () => {
               leading-none
             "
             style={{
-              WebkitTextStroke: "0.5px white",
-              textShadow: "2px 2px 8px rgba(0,0,0,0.6)"
+              textShadow: `
+                -1px -1px 0 #ffffff,
+                 1px -1px 0 #ffffff,
+                -1px  1px 0 #ffffff,
+                 1px  1px 0 #ffffff,
+                 0px  2px 8px rgba(0,0,0,0.6)
+              `
             }}
           >
-            <span
-              style={{
-                WebkitTextStroke: "0.5px white",
-                color: "#8b1d2c"
-              }}
-            >
+            <span style={{ color: "#7f1322ff" }}>
               CHEST,
             </span>{" "}
-            <span
-              style={{
-                WebkitTextStroke: "0.5px white",
-                color: "#0f766e"
-              }}
-            >
+            <span style={{ color: "#046670ff }}>
               KIDNEY AND DIGESTIVE CARE CLINIC
             </span>
           </h1>
