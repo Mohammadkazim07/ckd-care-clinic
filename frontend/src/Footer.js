@@ -87,10 +87,10 @@ const Footer = () => {
           </p>
 
           <p className="text-xs text-white/70">
-            Developed by <span className="font-semibold">Er.Mohammad Kazim</span> |
+            Developed by <span className="font-semibold">Er. Mohammad Kazim</span> |
             📧{" "}
             <a
-              href="mailto:mohammadkazim07@@gmail.com"
+              href="mailto:mohammadkazim07@gmail.com"
               className="underline hover:text-yellow-300"
             >
               mohammadkazim07@gmail.com
