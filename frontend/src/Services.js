@@ -158,17 +158,17 @@ const Services = () => {
     {
       title: "Respiratory Consultation",
       description:
-        "Consult with an expert if you have respiratory issues such as asthma, bronchitis, or other lung-related conditions.",
+        "Consult with an expert if you have respiratory issues such as asthma, bronchitis, or other lung-related conditions....",
     },
     {
       title: "Cardiology Consultation",
       description:
-        "Get expert advice for heart conditions, high blood pressure, and other cardiovascular health issues.",
+        "Get expert advice for heart conditions, high blood pressure, and other cardiovascular health issues....",
     },
     {
       title: "Neurology Consultation",
       description:
-        "Consult with a neurologist for conditions such as migraines, epilepsy, and other neurological disorders.",
+        "Consult with a neurologist for conditions such as migraines, epilepsy, and other neurological disorders....",
     },
     {
       title: "Rheumatology Consultation",
@@ -178,7 +178,7 @@ const Services = () => {
     {
       title: "Gastroenterology Consultation",
       description:
-        "Consult with rheumatologist for the health and wellbeing of your gut and liver",
+        "Consult with specialist of gut and liver....",
     },
   ];
 
