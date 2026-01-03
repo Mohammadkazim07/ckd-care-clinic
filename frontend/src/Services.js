@@ -173,12 +173,12 @@ const Services = () => {
     {
       title: "Rheumatology Consultation",
       description:
-        "Consult with pediatricians for the health and wellbeing of your child, from infants to teenagers.",
+        "Consult with rheumatologist for the health and wellbeing, if you have R.A, Arthritis, Osteoarthritis...",
     },
     {
       title: "Gastroenterology Consultation",
       description:
-        "A comprehensive health checkup to ensure your overall health is in good condition.",
+        "Consult with rheumatologist for the health and wellbeing of your gut and liver",
     },
   ];
 
