@@ -26,10 +26,10 @@ const Header = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* 🔹 BACKGROUND OVERLAY (50% OPACITY) */}
+      {/* 🔹 BACKGROUND OVERLAY (10% IMAGE VISIBILITY) */}
       <div
         className="absolute inset-0"
-        style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
+        style={{ backgroundColor: "rgba(255, 255, 255, 0.9)" }}
       ></div>
 
       {/* CONTENT */}
