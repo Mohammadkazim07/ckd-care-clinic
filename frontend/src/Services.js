@@ -171,12 +171,12 @@ const Services = () => {
         "Consult with a neurologist for conditions such as migraines, epilepsy, and other neurological disorders.",
     },
     {
-      title: "Pediatric Consultation",
+      title: "Rheumatology Consultation",
       description:
         "Consult with pediatricians for the health and wellbeing of your child, from infants to teenagers.",
     },
     {
-      title: "General Checkup",
+      title: "Gastroenterology Consultation",
       description:
         "A comprehensive health checkup to ensure your overall health is in good condition.",
     },
