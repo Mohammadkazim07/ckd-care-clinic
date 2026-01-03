@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "./assets/logo.png";
-import headerBg from "./assets/banner.PNG"; // 👈 ADD THIS
+import banner from "./assets/banner.PNG";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -20,10 +20,7 @@ const Header = () => {
     <header
       className="w-full relative"
       style={{
-        backgroundImage: `linear-gradient(
-          rgba(31, 58, 95, 0.85),
-          rgba(31, 58, 95, 0.85)
-        ), url(${banner})`,
+        backgroundImage: `url(${banner})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat"
@@ -35,10 +32,10 @@ const Header = () => {
         {/* TOP ROW */}
         <div className="flex items-center gap-4">
 
-          {/* LOGO */}
+          {/* LOGO (TRANSPARENT BACKGROUND) */}
           <div
             onClick={() => navigate("/")}
-            className="bg-white p-2 rounded-md cursor-pointer"
+            className="p-2 rounded-md cursor-pointer"
           >
             <img
               src={logo}
@@ -47,11 +44,9 @@ const Header = () => {
             />
           </div>
 
-          {/* TITLE */}
+          {/* TITLE WITH WHITE OUTLINE ON EACH LETTER */}
           <h1
             className="
-              bg-white
-              rounded-md
               px-6
               py-3
               font-extrabold
@@ -61,9 +56,25 @@ const Header = () => {
               lg:text-[50px]
               leading-none
             "
+            style={{
+              WebkitTextStroke: "0.5px white",
+              textShadow: "2px 2px 8px rgba(0,0,0,0.6)"
+            }}
           >
-            <span className="text-[#8b1d2c]">CHEST, </span>
-            <span className="text-[#0f766e]">
+            <span
+              style={{
+                WebkitTextStroke: "0.5px white",
+                color: "#8b1d2c"
+              }}
+            >
+              CHEST,
+            </span>{" "}
+            <span
+              style={{
+                WebkitTextStroke: "0.5px white",
+                color: "#0f766e"
+              }}
+            >
               KIDNEY AND DIGESTIVE CARE CLINIC
             </span>
           </h1>
