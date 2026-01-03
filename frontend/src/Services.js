@@ -178,7 +178,7 @@ const Services = () => {
     {
       title: "Gastroenterology Consultation",
       description:
-        "Consult with specialist of gut and liver....",
+        "Expert consultation for acidity, gas, liver and bowel disorder. Relief begins with the right diagnosis....",
     },
   ];
 
