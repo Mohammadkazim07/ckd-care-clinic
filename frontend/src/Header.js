@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "./assets/logo.png";
-import banner from "./assets/banner.PNG";
+import banner from "./assets/banner1.PNG";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -23,11 +23,17 @@ const Header = () => {
         backgroundImage: `url(${banner})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundRepeat: "no-repeat"
+        backgroundRepeat: "no-repeat",
       }}
     >
+      {/* 🔹 BACKGROUND OVERLAY (50% OPACITY) */}
+      <div
+        className="absolute inset-0"
+        style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
+      ></div>
+
       {/* CONTENT */}
-      <div className="w-full px-6 py-4">
+      <div className="relative z-10 w-full px-6 py-4">
 
         {/* TOP ROW */}
         <div className="flex items-center gap-4">
@@ -82,16 +88,16 @@ const Header = () => {
 
         {/* NAVBAR ROW */}
         <div className="mt-4 flex justify-end items-center gap-4 flex-wrap">
-          <a href="#1" className="text-white font-semibold text-lg hover:bg-[#8b1d2c] px-2 py-1 rounded">
+          <a href="#1" className="text-blue font-semibold text-lg hover:bg-[#8b1d2c] px-2 py-1 rounded">
             Profile
           </a>
-          <a href="#4" className="text-white font-semibold text-lg hover:bg-[#8b1d2c] px-2 py-1 rounded">
+          <a href="#4" className="text-blue font-semibold text-lg hover:bg-[#8b1d2c] px-2 py-1 rounded">
             Publications
           </a>
-          <a href="#2" className="text-white font-semibold text-lg hover:bg-[#8b1d2c] px-2 py-1 rounded">
+          <a href="#2" className="text-blue font-semibold text-lg hover:bg-[#8b1d2c] px-2 py-1 rounded">
             Services
           </a>
-          <a href="#5" className="text-white font-semibold text-lg hover:bg-[#8b1d2c] px-2 py-1 rounded">
+          <a href="#5" className="text-blue font-semibold text-lg hover:bg-[#8b1d2c] px-2 py-1 rounded">
             Achievements
           </a>
 
