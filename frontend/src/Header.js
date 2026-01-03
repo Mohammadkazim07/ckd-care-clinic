@@ -85,7 +85,7 @@ const Header = () => {
           <a
             href="#1"
             className="inline-block text-lg font-semibold bg-gray-700 px-4 py-2 rounded-md hover:bg-gray-800 transition"
-            style={{ color: "#7f1322" }}
+            style={{ color: "#ffffff" }}
           >
             Profile
           </a>
@@ -93,7 +93,7 @@ const Header = () => {
           <a
             href="#4"
             className="inline-block text-lg font-semibold bg-gray-700 px-4 py-2 rounded-md hover:bg-gray-800 transition"
-            style={{ color: "#7f1322" }}
+            style={{ color: "#ffffff" }}
           >
             Publications
           </a>
@@ -101,7 +101,7 @@ const Header = () => {
           <a
             href="#2"
             className="inline-block text-lg font-semibold bg-gray-700 px-4 py-2 rounded-md hover:bg-gray-800 transition"
-            style={{ color: "#7f1322" }}
+            style={{ color: "#ffffff" }}
           >
             Services
           </a>
@@ -109,7 +109,7 @@ const Header = () => {
           <a
             href="#5"
             className="inline-block text-lg font-semibold bg-gray-700 px-4 py-2 rounded-md hover:bg-gray-800 transition"
-            style={{ color: "#7f1322" }}
+            style={{ color: "#ffffff" }}
           >
             Achievements
           </a>
