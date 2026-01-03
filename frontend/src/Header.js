@@ -75,7 +75,7 @@ const Header = () => {
             <span style={{ color: "#7f1322ff" }}>
               CHEST,
             </span>{" "}
-            <span style={{ color: "#046670ff }}>
+            <span style={{ color: "#046670ff" }}>
               KIDNEY AND DIGESTIVE CARE CLINIC
             </span>
           </h1>
