@@ -80,9 +80,13 @@ const DoctorSection = () => {
               <p className="font-bold">Experience - 7 years</p>
             </div>
 
-            <h2 className="inline-block text-2xl font-semibold text-white bg-gray-700 px-4 py-2 mb-6 rounded-md">
+            <h2
+              className="inline-block text-2xl font-semibold bg-gray-700 px-4 py-2 mb-6 rounded-md"
+              style={{ color: "#7f1322" }}
+            >
               About Dr. Mohammad Aamir
             </h2>
+
 
             <p className="mb-8 text-black leading-relaxed text-base sm:text-lg">
               Dr. Mohammad Aamir, a distinguished General physician, completed his
