@@ -33,9 +33,23 @@ const Footer = () => {
               Contact Us
             </h4>
             <ul className="text-sm space-y-3">
-              <li>📞 <span className="font-medium">+91 8862905807 / +91 7992284672</span></li>
-              <li>📧 <span className="font-medium">ckdcareclinic@gmail.com</span></li>
-              <li>📍 <span className="font-medium">Meer Nagar Road, Near Sadar Hospital, Araria</span></li>
+              <li>
+                📞 <span className="font-medium">+91 8862905807 / +91 7992284672</span>
+              </li>
+              <li>
+                📧{" "}
+                <a
+                  href="mailto:ckdcareclinic@gmail.com"
+                  className="font-medium underline hover:text-yellow-300 transition"
+                >
+                  ckdcareclinic@gmail.com
+                </a>
+              </li>
+              <li>
+                📍 <span className="font-medium">
+                  Meer Nagar Road, Near Sadar Hospital, Araria
+                </span>
+              </li>
             </ul>
           </div>
 
@@ -87,8 +101,7 @@ const Footer = () => {
           </p>
 
           <p className="text-xs text-white/70">
-            Developed by <span className="font-semibold">Er. Mohammad Kazim</span> |
-            📧{" "}
+            Developed by <span className="font-semibold">Er. Mohammad Kazim</span> | 📧{" "}
             <a
               href="mailto:mohammadkazim07@gmail.com"
               className="underline hover:text-yellow-300"
