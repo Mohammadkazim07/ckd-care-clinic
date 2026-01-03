@@ -29,7 +29,7 @@ const Header = () => {
       {/* 🔹 BACKGROUND OVERLAY (50% OPACITY) */}
       <div
         className="absolute inset-0"
-        style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
+        style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
       ></div>
 
       {/* CONTENT */}
