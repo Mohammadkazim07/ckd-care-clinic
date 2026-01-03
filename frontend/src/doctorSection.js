@@ -106,7 +106,7 @@ const DoctorSection = () => {
         {/* ===== MEMBERSHIP ===== */}
         <section className="w-full bg-white py-12 mt-10 rounded-xl">
           <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-3xl font-semibold text-[#1F3A5F] mb-6">
+            <h2 className="inline-block text-2xl font-semibold text-white bg-gray-700 px-4 py-2 mb-6 rounded-md">
               Dr. Mohammad Aamir&apos;s Membership
             </h2>
 
